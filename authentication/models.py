@@ -38,15 +38,12 @@ class User(AbstractUser):
     email = models.EmailField(_("email address"), max_length=80, unique=True)
     phone_number = PhoneNumberField(_("phone number"), unique=True)
     date_of_birth = models.DateField(_("date of birth"), unique=True, null=True)
-    address = models.CharField(_("address"), max_length=255, null=True)
-    is_active = models.BooleanField(_("active"), default=True)
-    is_staff = models.BooleanField(_("staff"), default=False)
-    is_superuser = models.BooleanField(_("superuser"), default=False)
+    delivery_address = models.CharField(
+        _("delivery_address"), max_length=255, null=True
+    )
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["username", "phone_number", "date_of_birth", "address"]
-
-    objects = CustomUserManager()
+    REQUIRED_FIELDS = ["username", "phone_number", "date_of_birth", "delivery_address"]
 
     def __str__(self):
-        return self.email
+        return f"<User {self.email}"
