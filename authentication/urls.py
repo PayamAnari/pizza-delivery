@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
 
-urlpattern = [
-    path("", views.HelloAuthView.as_view(), name="hello-auth"),
+urlpatterns = [
+    path("", views.HelloAuthView.as_view(), name="hello_auth"),
 ]
