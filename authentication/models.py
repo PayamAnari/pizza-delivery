@@ -34,6 +34,8 @@ class CustomUserManager(BaseUserManager):
 
 
 class User(AbstractUser):
+    first_name = models.CharField(_("first name"), max_length=30, unique=True)
+    last_name = models.CharField(_("last name"), max_length=30, unique=True)
     username = models.CharField(_("username"), max_length=30, unique=True)
     email = models.EmailField(_("email address"), max_length=80, unique=True)
     phone_number = PhoneNumberField(_("phone number"), unique=True)
@@ -43,7 +45,14 @@ class User(AbstractUser):
     )
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["username", "phone_number", "date_of_birth", "delivery_address"]
+    REQUIRED_FIELDS = [
+        "first_name",
+        "last_name",
+        "username",
+        "phone_number",
+        "date_of_birth",
+        "delivery_address",
+    ]
 
     def __str__(self):
         return f"<User {self.email}"
