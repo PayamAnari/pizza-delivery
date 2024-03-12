@@ -1,0 +1,35 @@
+# Environment Variables
+.env
+
+# Virtual environment
+env/
+
+# IDE files
+.idea/
+.vscode/
+
+# Compiled Python files
+*.pyc
+
+# Logs
+*.log
+
+# Dependency directories
+__pycache__/
+node_modules/
+
+# Database files
+*.db
+
+# Media files
+media/
+
+# Compiled files
+*.exe
+*.dll
+*.so
+*.dylib
+
+# OS generated files
+.DS_Store
+Thumbs.db
