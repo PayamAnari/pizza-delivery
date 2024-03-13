@@ -48,5 +48,7 @@ class User(AbstractUser):
         "phone_number",
     ]
 
+    objects = CustomUserManager()
+
     def __str__(self):
         return f"<User {self.email}"
