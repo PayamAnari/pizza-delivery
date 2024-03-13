@@ -12,8 +12,19 @@ class Order(models.Model):
         ("SMALL", "small"),
         ("MEDIUM", "medium"),
         ("LARGE", "large"),
-        ("EXTRA_LARGE", "extra_large"),
+        ("EXTRA_LARGE", "extraLarge"),
+    )
+
+    ORDER_STATUS = (
+        ("PENDING", "pending"),
+        ("IN_TRANSIT", "inTransit"),
+        ("DELIVERD", "deliver"),
+        ("CANCELLED", "cancelled"),
     )
 
     customer = models.ForeignKey(User, on_delete=models.CASCADE)
-    size = models.CharField(max_length=20)
+    size = models.CharField(max_length=20, choices=SIZES, default=SIZES[0][0])
+    orde_status = models.CharField(
+        max_length=20, chiocese=ORDER_STATUS, default=ORDER_STATUS[0][0]
+    )
+    quantity = models.IntegerField()
