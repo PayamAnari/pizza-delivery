@@ -18,3 +18,35 @@ class UserCreationSerializer(serializers.ModelSerializer):
     delivery_address = serializers.CharField(
         ("delivery_address"), max_length=255, allow_blank=True, allow_null=True
     )
+
+    class Meta:
+        model = User
+        fields = [
+            "first_name",
+            "last_name",
+            "username",
+            "email",
+            "phone_number",
+            "password",
+            "date_of_birth",
+            "delivery_address",
+        ]
+
+    def validate(self, attrs):
+
+        username = User.objects.filter(username=attrs["username"]).exists()
+
+        if username:
+            raise serializers.ValidationError(detail="User with username exists")
+
+        email = User.objects.filter(username=attrs["email"]).exists()
+
+        if email:
+            raise serializers.validationError(detail="User with email exists")
+
+        phone_number = User.objects.filter(username=attrs["phone_number"]).exists()
+
+        if phone_number:
+            raise serializers.validationError(detail="User with phone number exists")
+
+        return super().validate(attrs)
