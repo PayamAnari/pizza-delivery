@@ -39,10 +39,6 @@ class User(AbstractUser):
     username = models.CharField(_("username"), max_length=30, unique=True)
     email = models.EmailField(_("email address"), max_length=80, unique=True)
     phone_number = PhoneNumberField(_("phone number"), unique=True)
-    date_of_birth = models.DateField(_("date of birth"), unique=True, null=True)
-    delivery_address = models.CharField(
-        _("delivery_address"), max_length=255, null=True
-    )
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = [
@@ -50,8 +46,6 @@ class User(AbstractUser):
         "last_name",
         "username",
         "phone_number",
-        "date_of_birth",
-        "delivery_address",
     ]
 
     def __str__(self):
