@@ -22,7 +22,7 @@ class UserCreationSerializer(serializers.ModelSerializer):
     )
     date_of_birth = serializers.DateField(label=("date of birth"), allow_null=True)
     delivery_address = serializers.CharField(
-        label=("delivery_address"), max_length=255, allow_blank=True, allow_null=True
+        label=("delivery address"), max_length=255, allow_blank=True, allow_null=True
     )
 
     class Meta:
