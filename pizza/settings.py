@@ -35,7 +35,14 @@ INSTALLED_APPS = [
 
 AUTH_USER_MODEL = "authentication.User"
 
-REST_FRAMEWORK = {"NON_FIELD_ERRORS_KEY": "errors"}
+REST_FRAMEWORK = {
+    "NON_FIELD_ERRORS_KEY": "errors",
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework.simplejwt.authentication.JWTAuthentication",
+    ),
+}
+
+SIMPLE_JWT = {"AUTH_HEADER_TYPES": ("Bearer",)}
 
 
 MIDDLEWARE = [
