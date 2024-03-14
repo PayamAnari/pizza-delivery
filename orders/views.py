@@ -4,6 +4,14 @@ from rest_framework.response import Response
 
 
 # Create your views here.
-class HelloOrderView(generics.GenericAPIView):
+class OrderCreateListView(generics.GenericAPIView):
     def get(self, request):
-        return Response(data={"message": "Hello, orders!"}, status=status.HTTP_200_OK)
+        pass
+
+    
+    def post(self, request):
+        pass
+
+
+
+class OrderDetailView(generics.GenericAPIView):
