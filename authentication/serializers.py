@@ -1,6 +1,7 @@
 from .models import User
 from rest_framework import serializers
 from phonenumber_field.serializerfields import PhoneNumberField
+from django.contrib.auth.hashers import make_password
 
 
 class UserCreationSerializer(serializers.ModelSerializer):
@@ -37,6 +38,11 @@ class UserCreationSerializer(serializers.ModelSerializer):
             "date_of_birth",
             "delivery_address",
         ]
+
+    def create(self, validated_data):
+
+        validated_data["password"] = make_password(validated_data["password"])
+        return super().create(validated_data)
 
     def validate(self, attrs):
 
