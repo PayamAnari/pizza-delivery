@@ -6,6 +6,7 @@ class OrderCreationSerializer(serializers.ModelSerializer):
     size = serializers.CharField(max_length=20)
     order_status = serializers.HiddenField(max_length=20, default="PENDING")
     quantity = serializers.IntegerField()
+    flavour = serializers.CharField(max_length=20)
 
     class Meta:
         model = Order
