@@ -20,3 +20,14 @@ class OrderDetailSerializer(serializers.ModelSerializer):
     flavour = serializers.CharField(max_length=20)
     created_at = serializers.DateTimeField()
     updated_at = serializers.DateTimeField()
+
+    class Meta:
+        model = Order
+        fields = [
+            "size",
+            "order_status",
+            "quantity",
+            "flavour",
+            "created_at",
+            "updated_at",
+        ]
