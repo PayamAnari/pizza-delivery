@@ -87,8 +87,6 @@ class UserDetailSerializer(serializers.ModelSerializer):
     delivery_address = serializers.CharField(
         label=("delivery address"), max_length=255, allow_blank=True, allow_null=True
     )
-    created_at = serializers.DateTimeField()
-    updated_at = serializers.DateTimeField()
 
     class Meta:
         model = User
@@ -100,6 +98,4 @@ class UserDetailSerializer(serializers.ModelSerializer):
             "phone_number",
             "date_of_birth",
             "delivery_address",
-            "created_at",
-            "updated_at",
         ]

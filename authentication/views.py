@@ -3,6 +3,7 @@ from rest_framework import generics, status
 from rest_framework.response import Response
 from .models import User
 from . import serializers
+from rest_framework.permissions import IsAuthenticated
 
 
 # Create your views here.
@@ -27,6 +28,7 @@ class UserCreateView(generics.GenericAPIView):
 class UserDetailView(generics.GenericAPIView):
 
     serializer_class = serializers.UserDetailSerializer
+    permission_classes = [IsAuthenticated]
 
     def get(self, request, user_id):
 
