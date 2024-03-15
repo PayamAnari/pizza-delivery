@@ -44,11 +44,15 @@ class OrderDetailView(generics.GenericAPIView):
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
     def put(self, request, order_id):
-        data = request.data
 
-        user = request.user
+        try:
+            order = Order.objects.get(pk=order_id)
+        except Order.DoesNotExist:
+            return Response(
+                data={"error": "Order not found"}, status=status.HTTP_404_NOT_FOUND
+            )
 
-        serializer = self.serializer_class(data=data)
+        serializer = self.serializer_class(order, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
