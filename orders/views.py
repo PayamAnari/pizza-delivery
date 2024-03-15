@@ -47,5 +47,11 @@ class OrderDetailView(generics.GenericAPIView):
 
         serializer = self.serializer_class(data=data)
 
+        if serializer.is_valid():
+            serializer.save()
+            return Response(data=serializer.data, status=status.HTTP_200_OK)
+
+        return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
     def delete(self, request, order_id):
         pass
