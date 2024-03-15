@@ -25,6 +25,17 @@ class UserCreateView(generics.GenericAPIView):
         return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+class UserListView(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = serializers.UserDetailSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        users = User.objects.all()
+        serializer = self.serializer_class(instance=users, many=True)
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
+
+
 class UserDetailView(generics.GenericAPIView):
 
     serializer_class = serializers.UserDetailSerializer
