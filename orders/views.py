@@ -34,6 +34,7 @@ class OrderCreateListView(generics.GenericAPIView):
 
 class OrderDetailView(generics.GenericAPIView):
     serializer_class = serializers.OrderDetailSerializer
+    permission_classes = [IsAuthenticated]
 
     def get(self, request, order_id):
 
@@ -44,6 +45,8 @@ class OrderDetailView(generics.GenericAPIView):
 
     def put(self, request, order_id):
         data = request.data
+
+        user = request.user
 
         serializer = self.serializer_class(data=data)
 
