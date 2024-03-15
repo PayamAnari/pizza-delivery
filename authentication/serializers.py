@@ -67,3 +67,39 @@ class UserCreationSerializer(serializers.ModelSerializer):
             raise serializers.validationError(detail="User with address exists")
 
         return super().validate(attrs)
+
+
+class UserDetailSerializer(serializers.ModelSerializer):
+    first_name = serializers.CharField(
+        label=("first name"), max_length=30, allow_blank=True
+    )
+    last_name = serializers.CharField(
+        label=("last name"), max_length=30, allow_blank=False
+    )
+    username = serializers.CharField(
+        label=("username"), max_length=40, allow_blank=False
+    )
+    email = serializers.EmailField(label=("email address"), max_length=80)
+    phone_number = PhoneNumberField(
+        label=("phone number"), allow_blank=False, allow_null=False
+    )
+    date_of_birth = serializers.DateField(label=("date of birth"), allow_null=True)
+    delivery_address = serializers.CharField(
+        label=("delivery address"), max_length=255, allow_blank=True, allow_null=True
+    )
+    created_at = serializers.DateTimeField()
+    updated_at = serializers.DateTimeField()
+
+    class Meta:
+        model = User
+        fields = [
+            "first_name",
+            "last_name",
+            "username",
+            "email",
+            "phone_number",
+            "date_of_birth",
+            "delivery_address",
+            "created_at",
+            "updated_at",
+        ]

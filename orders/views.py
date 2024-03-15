@@ -45,20 +45,28 @@ class OrderDetailView(generics.GenericAPIView):
 
     def put(self, request, order_id):
 
-        try:
-            order = Order.objects.get(pk=order_id)
-        except Order.DoesNotExist:
-            return Response(
-                data={"error": "Order not found"}, status=status.HTTP_404_NOT_FOUND
-            )
+        order = get_object_or_404(Order, pk=order_id)
 
         serializer = self.serializer_class(order, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
-            return Response(data=serializer.data, status=status.HTTP_200_OK)
+            return Response(
+                data={
+                    "message": "Order updated successfully",
+                    "order": serializer.data,
+                },
+                status=status.HTTP_200_OK,
+            )
 
         return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, order_id):
-        pass
+
+        order = get_object_or_404(Order, pk=order_id)
+
+        order.delete()
+        return Response(
+            data={"message": "Order deleted successfully"},
+            status=status.HTTP_204_NO_CONTENT,
+        )
