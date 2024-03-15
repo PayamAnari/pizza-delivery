@@ -9,7 +9,7 @@ from . import serializers
 class OrderCreateListView(generics.GenericAPIView):
 
     serializer_class = serializers.OrderCreationSerializer
-    query_set = Order.objects.all()
+    queryset = Order.objects.all()
 
     def get(self, request):
         orders = Order.objects.all()

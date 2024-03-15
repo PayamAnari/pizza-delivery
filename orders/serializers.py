@@ -10,4 +10,4 @@ class OrderCreationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Order
-        fields = ["size", "order_status", "quantity"]
+        fields = ["size", "order_status", "quantity", "flavour"]
