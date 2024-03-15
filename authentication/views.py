@@ -22,3 +22,33 @@ class UserCreateView(generics.GenericAPIView):
             return Response(data=serializer.data, status=status.HTTP_201_CREATED)
 
         return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class UserDetailView(generics.GenericAPIView):
+
+    serializer_class = serializers.UserDetailSerializer
+
+    def get(self, request, user_id):
+
+        user = User.objects.get(pk=user_id)
+        serializer = self.serializer_class(instance=user)
+
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
+
+    def put(self, request, user_id):
+
+        user = User.objects.get(pk=user_id)
+
+        serializer = self.serializer_class(user, data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(
+                data={
+                    "message": "User updated successfully",
+                    "user": serializer.data,
+                },
+                status=status.HTTP_200_OK,
+            )
+
+        return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
