@@ -52,3 +52,10 @@ class UserDetailView(generics.GenericAPIView):
             )
 
         return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, user_id):
+        user = User.objects.get(pk=user_id)
+        user.delete()
+        return Response(
+            data={"message": "User deleted successfully"}, status=status.HTTP_200_OK
+        )
