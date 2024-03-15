@@ -33,6 +33,7 @@ class OrderCreateListView(generics.GenericAPIView):
 
 
 class OrderDetailView(generics.GenericAPIView):
+    serializer_class = serializers.OrderDetailSerializer
 
     def get(self, request, order_id):
 
