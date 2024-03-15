@@ -43,6 +43,7 @@ class User(AbstractUser):
     delivery_address = models.CharField(
         _("delivery address"), max_length=255, blank=True, null=True
     )
+    date_joined = models.DateTimeField(_("date joined"), auto_now_add=True)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = [

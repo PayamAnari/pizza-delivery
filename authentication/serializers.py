@@ -87,10 +87,12 @@ class UserDetailSerializer(serializers.ModelSerializer):
     delivery_address = serializers.CharField(
         label=("delivery address"), max_length=255, allow_blank=True, allow_null=True
     )
+    date_joined = serializers.DateTimeField(label=("date joined"), read_only=True)
 
     class Meta:
         model = User
         fields = [
+            "id",
             "first_name",
             "last_name",
             "username",
@@ -98,4 +100,5 @@ class UserDetailSerializer(serializers.ModelSerializer):
             "phone_number",
             "date_of_birth",
             "delivery_address",
+            "date_joined",
         ]
