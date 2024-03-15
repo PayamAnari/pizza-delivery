@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics, status
 from rest_framework.response import Response
-from .models import Orders
+from .models import Order
 from . import serializers
 
 
@@ -11,8 +11,8 @@ class OrderCreateListView(generics.GenericAPIView):
     serializer_class = serializers.OrderCreationSerializer
 
     def get(self, request):
-        orders = Orders.objects.all()
-        serializer = self.serializer_class(instance=orders)
+        orders = Order.objects.all()
+        serializer = self.serializer_class(instance=orders, many=True)
 
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
