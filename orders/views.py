@@ -73,4 +73,11 @@ class OrderDetailView(generics.GenericAPIView):
 
 
 class UpdateOrderStatus(generics.GenericAPIView):
-    pass
+    serializer_class = serializers.OrderStatusUpdateSerializer
+
+    def put(self, request, order_id):
+        order = get_object_or_404(Order, pk=order_id)
+
+        data = request.data
+
+        serializer = self.serializer_class(data=data, instance=order)
