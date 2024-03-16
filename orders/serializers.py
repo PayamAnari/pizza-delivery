@@ -31,3 +31,7 @@ class OrderDetailSerializer(serializers.ModelSerializer):
             "created_at",
             "updated_at",
         ]
+
+
+class OrderStatusUpdateSerializer(serializers.ModelSerializer):
+    order_status = serializers.CharField(default="PENDING")
