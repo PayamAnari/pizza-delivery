@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from .models import User
 from . import serializers
 from rest_framework.permissions import IsAuthenticated
+from drf_yasg.utils import swagger_auto_schema
 
 
 # Create your views here.
@@ -13,6 +14,9 @@ class UserCreateView(generics.GenericAPIView):
 
     serializer_class = serializers.UserCreationSerializer
 
+    @swagger_auto_schema(
+        operation_summary="Create a new user",
+    )
     def post(self, request):
         data = request.data
 
@@ -30,6 +34,7 @@ class UserListView(generics.ListAPIView):
     serializer_class = serializers.UserDetailSerializer
     permission_classes = [IsAuthenticated]
 
+    @swagger_auto_schema(operation_summary="Get all users")
     def get(self, request):
         users = User.objects.all()
         serializer = self.serializer_class(instance=users, many=True)
@@ -41,6 +46,7 @@ class UserDetailView(generics.GenericAPIView):
     serializer_class = serializers.UserDetailSerializer
     permission_classes = [IsAuthenticated]
 
+    @swagger_auto_schema(operation_summary="Get a user by id")
     def get(self, request, user_id):
 
         user = User.objects.get(pk=user_id)
@@ -48,6 +54,7 @@ class UserDetailView(generics.GenericAPIView):
 
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
+    @swagger_auto_schema(operation_summary="Update a user by id")
     def put(self, request, user_id):
 
         user = User.objects.get(pk=user_id)
@@ -66,6 +73,7 @@ class UserDetailView(generics.GenericAPIView):
 
         return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    @swagger_auto_schema(operation_summary="Delete a user by id")
     def delete(self, request, user_id):
         user = User.objects.get(pk=user_id)
         user.delete()
