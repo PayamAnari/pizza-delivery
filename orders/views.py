@@ -78,6 +78,7 @@ class OrderDetailView(generics.GenericAPIView):
 
 class UpdateOrderStatus(generics.GenericAPIView):
     serializer_class = serializers.OrderStatusUpdateSerializer
+    permission_classes = [IsAuthenticated, IsAdminUser]
 
     def put(self, request, order_id):
         order = get_object_or_404(Order, pk=order_id)
