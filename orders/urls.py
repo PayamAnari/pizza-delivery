@@ -11,4 +11,5 @@ urlpatterns = [
         views.UpdateOrderStatus.as_view(),
         name="update-status",
     ),
+    path("user/<int:user_id>/", views.UserOrdersView.as_view(), name="user-orders"),
 ]
