@@ -81,3 +81,13 @@ class UpdateOrderStatus(generics.GenericAPIView):
         data = request.data
 
         serializer = self.serializer_class(data=data, instance=order)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(
+                data={
+                    "message": "Order status updated successfully",
+                    "order": serializer.data,
+                },
+                status=status.HTTP_200_OK,
+            )
