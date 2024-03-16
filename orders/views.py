@@ -1,9 +1,13 @@
 from django.shortcuts import render, get_object_or_404
 from rest_framework import generics, status
 from rest_framework.response import Response
-from .models import Order, User
+from .models import Order
 from . import serializers
 from rest_framework.permissions import IsAuthenticated
+from django.contrib import get_user_model
+
+
+User = get_user_model()
 
 
 # Create your views here.
