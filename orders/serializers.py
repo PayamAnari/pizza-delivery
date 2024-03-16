@@ -35,3 +35,7 @@ class OrderDetailSerializer(serializers.ModelSerializer):
 
 class OrderStatusUpdateSerializer(serializers.ModelSerializer):
     order_status = serializers.CharField(default="PENDING")
+
+    class Meta:
+        model = Order
+        fields = ["order_status"]
