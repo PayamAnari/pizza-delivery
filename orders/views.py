@@ -70,3 +70,7 @@ class OrderDetailView(generics.GenericAPIView):
             data={"message": "Order deleted successfully"},
             status=status.HTTP_204_NO_CONTENT,
         )
+
+
+class UpdateOrderStatus(generics.GenericAPIView):
+    pass
