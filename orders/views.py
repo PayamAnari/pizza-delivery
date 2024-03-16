@@ -117,7 +117,7 @@ class UserOrderDetail(generics.GenericAPIView):
 
     def get(self, request, user_id, order_id):
         user = User.objects.get(pk=user_id)
-        order = Order.objects.all().filter(customer=user).filter(pk=order_id)
+        order = Order.objects.all().filter(customer=user).get(pk=order_id)
 
         serializer = self.serializer_class(instance=order)
 
