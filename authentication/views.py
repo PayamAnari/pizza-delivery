@@ -3,7 +3,7 @@ from rest_framework import generics, status
 from rest_framework.response import Response
 from .models import User
 from . import serializers
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from drf_yasg.utils import swagger_auto_schema
 
 
@@ -32,7 +32,7 @@ class UserCreateView(generics.GenericAPIView):
 class UserListView(generics.ListAPIView):
     queryset = User.objects.all()
     serializer_class = serializers.UserDetailSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsAdminUser]
 
     @swagger_auto_schema(operation_summary="Get all users")
     def get(self, request):
