@@ -18,14 +18,14 @@ class OrderCreateListView(generics.GenericAPIView):
     queryset = Order.objects.all()
     permission_classes = [IsAuthenticated]
 
-    @swagger_auto_schema(
-        operation_summary="Get all orders",
-    )
-    def get(self, request):
-        orders = Order.objects.all()
-        serializer = self.serializer_class(instance=orders, many=True)
+    # @swagger_auto_schema(
+    #     operation_summary="Get all orders",
+    # )
+    # def get(self, request):
+    #     orders = Order.objects.all()
+    #     serializer = self.serializer_class(instance=orders, many=True)
 
-        return Response(data=serializer.data, status=status.HTTP_200_OK)
+    #     return Response(data=serializer.data, status=status.HTTP_200_OK)
 
     @swagger_auto_schema(
         operation_summary="Create a new order",
@@ -41,6 +41,18 @@ class OrderCreateListView(generics.GenericAPIView):
             return Response(data=serializer.data, status=status.HTTP_201_CREATED)
 
         return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class OrderDetailAllView(generics.GenericAPIView):
+    serializer_class = serializers.OrderDetailAllSerializer
+    permission_classes = [IsAuthenticated]
+
+    @swagger_auto_schema(operation_summary="Get all orders")
+    def get(self, request):
+        orders = Order.objects.all()
+        serializer = self.serializer_class(instance=orders, many=True)
+
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
 
 
 class OrderDetailView(generics.GenericAPIView):

@@ -14,7 +14,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config("DEBUG", cast=bool)
+DEBUG = config("DEBUG")
 
 
 ALLOWED_HOSTS = []
@@ -96,11 +96,11 @@ WSGI_APPLICATION = "pizza.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "pizza-delivery",
-        "USER": "root",
-        "PASSWORD": "2219499",
-        "HOST": "localhost",
-        "PORT": "3306",
+        "NAME": config("MYSQL_DATABASE"),
+        "USER": config("MYSQL_USER"),
+        "PASSWORD": config("MYSQL_PASSWORD"),
+        "HOST": config("MYSQL_HOST"),
+        "PORT": config("MYSQL_PORT"),
     }
 }
 
