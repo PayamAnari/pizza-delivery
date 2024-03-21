@@ -17,6 +17,7 @@ mysqlclient==2.2.4
 oauthlib==3.2.2
 packaging==24.0
 phonenumbers==8.13.31
+protobuf==5.26.0
 pycparser==2.21
 PyJWT==2.1.0
 PyMySQL==1.1.0
