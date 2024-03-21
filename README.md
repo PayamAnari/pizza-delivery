@@ -71,6 +71,7 @@ This project is a complete backend solution for a pizza delivery service, built 
   <img src="https://img.shields.io/badge/simplejwt-ffa500?style=for-the-badge&logo=simplejwt&logoColor=white"/>
   <img src="https://img.shields.io/badge/mysql-FF0000?style=for-the-badge&logo=mysql&logoColor=white"/>
   <img src="https://img.shields.io/badge/docker-0000FF?style=for-the-badge&logo=docker&logoColor=white"/>
+  <img src="https://img.shields.io/badge/docker compose-4682B4?style=for-the-badge&logo=docker&logoColor=white"/>
 </p>
 
 ---
