@@ -30,7 +30,7 @@ This project is a complete backend solution for a pizza delivery service, built 
 ---
 
 ## Features
-- **User Authentication(Dockerized):** Users can sign up, log in, and log out securely. Authentication is implemented using JSON Web Tokens (JWT) provided by Django Rest Framework.
+- **User Authentication(Dockerized):** Users can sign up, log in, and log out securely. Authentication is implemented using JSON Web Tokens (JWT) provided by Django Rest Framework. The authentication system is containerized within the Docker environment for easy deployment and management.
 - **User Management(Dockerized):** Users can update their profiles, including details like first name, last name, username, email, phone number, date of birth, and delivery address.
 - **Order Management(Dockerized):** Users can create new pizza orders, view details of their orders, update the status of their orders, and delete their orders. Additionally, administrators have the capability to update the status of any order.
 - **API Documentation(Dockerized):** The API is documented using Swagger UI and ReDoc, providing clear and interactive documentation for developers to explore the available endpoints.
