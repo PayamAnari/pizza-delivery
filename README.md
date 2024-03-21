@@ -60,6 +60,7 @@ This project is a complete backend solution for a pizza delivery service, built 
 - **Python Decouple:** A Python library for separating settings from code, allowing for easier management of environment variables.
 - **Pathlib:** A module in Python's standard library providing classes representing filesystem paths, used for resolving file paths within the project.
 - **Phonenumber Field:** A Django model and form field for normalizing and validating phone numbers, ensuring consistent formatting and data integrity.
+- **Docker:** A platform for developing, shipping, and running applications in containers, providing a consistent environment across different systems.
 
   <p align="left">
   <img src="https://img.shields.io/badge/django-00008B?style=for-the-badge&logo=django&logoColor=white"/>
