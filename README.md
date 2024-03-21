@@ -61,6 +61,7 @@ This project is a complete backend solution for a pizza delivery service, built 
 - **Pathlib:** A module in Python's standard library providing classes representing filesystem paths, used for resolving file paths within the project.
 - **Phonenumber Field:** A Django model and form field for normalizing and validating phone numbers, ensuring consistent formatting and data integrity.
 - **Docker:** A platform for developing, shipping, and running applications in containers, providing a consistent environment across different systems.
+- **Docker Compose:** A tool for defining and running multi-container Docker applications, simplifying the process of managing complex containerized environments.
 
   <p align="left">
   <img src="https://img.shields.io/badge/django-00008B?style=for-the-badge&logo=django&logoColor=white"/>
