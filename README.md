@@ -22,7 +22,7 @@
 </p>
 
 ---
-## Pizza Delivery App - Django REST API
+## Pizza Delivery App - Django REST API (DRF)
 ### Description
 
 This project is a complete backend solution for a pizza delivery service, built using Django REST Framework. It provides endpoints for user authentication, managing user profiles, creating, viewing, updating, and deleting pizza orders. The API is designed to be intuitive, secure, and easily extendable.
@@ -110,7 +110,7 @@ This project is a complete backend solution for a pizza delivery service, built 
 
 1- **Clone the repository:**
 ```
-git clone https://github.com/your_username/pizza-delivery.git
+git clone https://github.com/PayamAnari/pizza-delivery.git
 cd pizza-delivery
 
 ```
